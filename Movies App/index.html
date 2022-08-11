@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"
+  <title> Movies App</title>
+</head>
+
+<body>
+
+    <form id = "MovieForm">
+        <input type="text" id="MovieTitle" placeholder = "Title">
+        <input type="range"min="1" max="10" id="MovieScore">
+        <output>6</output>
+
+        <button type="submit"id = "MovieSubmit">Submit</button>
+    </form>
+    <p>
+        <ol id = "MovieList">
+
+        </ol>
+    </p>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+
+<script>
+//shows the score
+$(function(){
+  
+    $( "#MovieScore" ).on( "mousemove", function( event ) {
+        $(this)
+        .next()
+        .val($(this).val());
+    });
+
+    $('#MovieForm').submit(function(event){
+        event.preventDefault();
+        let title = $('#MovieTitle').val();
+        let score = $('#MovieScore').val();
+
+        $( "#MovieList" ).
+        append(`<li>${title}, Score: ${score} </li>`).append('<button class ="MovieRemove">Remove</button>');
+        $('.MovieRemove').on('click',function(event){
+       
+        $(this).prev().remove();
+        $(this).remove();
+
+    });
+
+    });
+
+    //code isnt running, need to figure out why.        
+   
+
+    
+    //$('#MovieList').
+});
+
+
+</script>
+
+</body>
+
+</html>
